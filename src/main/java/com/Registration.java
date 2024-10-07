@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import jakarta.servlet.RequestDispatcher;
@@ -67,8 +68,23 @@ public class Registration extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession hs=request.getSession();
-		String s1=(String)hs.getAttribute("uname");		
+		String s1=request.getParameter("fname");
+		String s2=request.getParameter("lname");
+		String s3=request.getParameter("uname");
+		String s4=request.getParameter("pword");
+		try {
+			PreparedStatement psmt=con.prepareStatement("INSERT INTO registration (fname, uname, username, password) VALUES (?, ?, ?, ?)");
+			psmt.setString(1, s1);
+			psmt.setString(2, s2);
+			psmt.setString(3, s3);
+			psmt.setString(4, s4);
+			psmt.executeUpdate();
+			HttpSession hs=request.getSession(true);
+			hs.setAttribute("uname",s3);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		PrintWriter pw=response.getWriter();
 		RequestDispatcher rd=request.getRequestDispatcher("login.html");
 		rd.forward(request, response);
