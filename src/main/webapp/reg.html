@@ -1,0 +1,43 @@
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <form action="reg"  method="post">
+      <h2>Ragistration</h2>
+        <div class="input-field">
+        <input type="text" name="fname" required>
+        <label>Enter your First Name</label>
+      </div>
+       <div class="input-field">
+        <input type="text" name="lname" required>
+        <label>Enter your Last Name</label>
+      </div>
+       <div class="input-field">
+        <input type="text" name="uname" required>
+        <label>Enter your User Name</label>
+      </div>
+      <div class="input-field">
+        <input type="password"  name="pword" required>
+        <label>Enter your password</label>
+      </div>
+      <div class="forget">
+        <label for="remember">
+          <input type="checkbox" id="remember">
+          <p>Remember me</p>
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit" href="login.html">Registrarr</button>
+      <div class="register">
+        <p>Already have an account?  <a href="login.html">Login</a></p>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
